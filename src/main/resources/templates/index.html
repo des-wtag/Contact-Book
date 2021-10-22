@@ -11,9 +11,6 @@
           crossorigin="anonymous">
 
 </head>
-
-<br>
-<br>
 <body>
 <!-- create navigation bar ( header) -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,9 +38,9 @@
 <br>
 
 <div class="container">
-    <h1>Registration and Login with Spring Boot, Spring Security,
-        Thymeleaf, Hibernate and MySQL</h1>
-    Welcome <span sec:authentication="principal.username"> User</span>
+    <h1>
+        Welcome <span sec:authentication="principal.username"> User</span>
+    </h1>
 </div>
 </body>
 </html>
