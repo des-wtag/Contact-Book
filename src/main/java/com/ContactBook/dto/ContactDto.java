@@ -18,7 +18,6 @@ public class ContactDto {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.note = note;
-//        this.user = user;
     }
 
     public String getFirstName() {
@@ -51,10 +50,4 @@ public class ContactDto {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-//    public User getUser() {
-//        return user;
-//    }
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 }

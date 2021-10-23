@@ -23,11 +23,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
     @Autowired
-//    private ContactRepository contactRepository;
 
     private BCryptPasswordEncoder passwordEncoder;
-
-    // Injected user repository interface
 
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         super();

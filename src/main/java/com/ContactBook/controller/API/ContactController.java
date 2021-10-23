@@ -1,4 +1,4 @@
-package com.ContactBook.controller;
+package com.ContactBook.controller.API;
 
 
 import com.ContactBook.model.Contact;
@@ -16,12 +16,12 @@ import java.util.NoSuchElementException;
 @RequestMapping("/api")
 public class ContactController {
     @Autowired
-    private ContactRepository contactService;
+    private ContactRepository contactRepository;
 
     @GetMapping("contact/{id}")
     public ResponseEntity<Contact> get(@PathVariable Long id) {
         try {
-            Contact contact = contactService.findById(id).get();
+            Contact contact = contactRepository.findById(id).get();
             return new ResponseEntity<Contact>(contact, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Contact>(HttpStatus.NOT_FOUND);
@@ -32,7 +32,7 @@ public class ContactController {
     public ResponseEntity<List<Contact>> get() {
         try {
             List<Contact> contacts = new ArrayList<Contact>();
-            contactService.findAll().forEach(contacts::add);
+            contactRepository.findAll().forEach(contacts::add);
             return new ResponseEntity<List<Contact>>(contacts, HttpStatus.OK);
 
         } catch (NoSuchElementException e) {
@@ -43,7 +43,7 @@ public class ContactController {
     @PostMapping("/createContact")
     public ResponseEntity<Contact> CreateContact(@RequestBody Contact contact) {
         try {
-            Contact _contact = contactService
+            Contact _contact = contactRepository
                     .save(new Contact(contact.getFirstName(), contact.getLastName(), contact.getEmail(), contact.getNote(), contact.getPhoneNumber()));
             return new ResponseEntity<Contact>(_contact, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class ContactController {
     @DeleteMapping("/contact/{id}")
     public ResponseEntity<HttpStatus> deleteContact(@PathVariable("id") long id) {
         try {
-            contactService.deleteById(id);
+            contactRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
