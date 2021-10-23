@@ -1,8 +1,16 @@
 package com.ContactBook.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "contacts")
 public class Contact {
@@ -20,13 +28,19 @@ public class Contact {
     private String phoneNumber;
     private String note;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    private User user;
 
-    public Contact() {
-
-    }
+//    public Contact(String firstName, String lastName, String email, String phoneNumber, String note, User user) {
+//        super();
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.phoneNumber = phoneNumber;
+//        this.note = note;
+//        this.user = user;
+//    }
     public Contact(String firstName, String lastName, String email, String phoneNumber, String note) {
         super();
         this.firstName = firstName;
@@ -34,6 +48,9 @@ public class Contact {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.note = note;
+    }
+
+    public Contact(Contact contact) {
     }
 
     public Long getId() {
@@ -84,4 +101,11 @@ public class Contact {
         this.note = note;
     }
 
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUserId(User user) {
+//        this.user = user;
+//    }
 }

@@ -31,22 +31,19 @@ public class User {
 
     private Collection<Role> roles;
 
-    @OneToMany(targetEntity = Contact.class, mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Collection<Contact> contacts;
-
     public User() {
          		
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles, Collection<Contact> contacts) {
+    public <User> User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roles = roles;
-        this.contacts = contacts;
     }
+
 
     public Long getId() {
         return id;
@@ -95,4 +92,17 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
 }

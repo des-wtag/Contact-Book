@@ -1,6 +1,6 @@
 package com.ContactBook.controller;
 
-import com.ContactBook.dto.UserRegistrationDto;
+import com.ContactBook.dto.UserDto;
 import com.ContactBook.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +21,8 @@ public class UserRegisterController {
     }
 
     @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
+    public UserDto userRegistrationDto() {
+        return new UserDto();
     }
 
     @GetMapping
@@ -31,7 +31,7 @@ public class UserRegisterController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto userRegisterDto) {
+    public String registerUserAccount(@ModelAttribute("user") UserDto userRegisterDto) {
         userService.save(userRegisterDto);
         return "redirect:/registration?success";
     }

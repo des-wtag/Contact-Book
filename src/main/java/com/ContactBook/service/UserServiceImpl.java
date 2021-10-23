@@ -1,7 +1,7 @@
 package com.ContactBook.service;
 
 
-import com.ContactBook.dto.UserRegistrationDto;
+import com.ContactBook.dto.UserDto;
 import com.ContactBook.model.Role;
 import com.ContactBook.model.User;
 import com.ContactBook.repository.UserRepository;
@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.lang.model.type.NullType;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -23,25 +22,30 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+//    private ContactRepository contactRepository;
 
     private BCryptPasswordEncoder passwordEncoder;
 
     // Injected user repository interface
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         super();
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public User save(UserRegistrationDto registrationDto){
+    public User save(UserDto registrationDto){
+
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(),
                 registrationDto.getEmail(),
                 passwordEncoder.encode(registrationDto.getPassword()),
-                Arrays.asList(new Role("ROLE_USER")), NullType);
+                Arrays.asList(new Role("ROLE_USER")));
 
         return userRepository.save(user);
+
     }
 
     @Override
