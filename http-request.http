@@ -1,0 +1,29 @@
+### Rest API to get all Contacts
+GET http://localhost:8080/api/contacts
+Accept: application/json
+
+### Rest API to get specific Contact with ID
+
+GET http://localhost:8080/api/contact/?id=12
+Accept: application/json
+
+###
+### Rest API to create Contact
+POST localhost:8080/api/createContact
+
+  {
+    "firstName": "Jerry",
+    "lastName": "Tom",
+    "email": "tomas.jerry@gmail.com",
+    "phoneNumber": "01796454123",
+    "note": "Hello Tom and jerry"
+  }
+
+
+<> 2021-10-24T132351.200.json
+<> 2021-10-24T132252.200.json
+<> 2021-10-24T132224.200.json
+<> 2021-10-24T131429.200.json
+<> 2021-10-22T210333.200.html
+
+###
