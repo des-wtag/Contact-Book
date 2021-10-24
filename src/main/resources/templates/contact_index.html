@@ -42,13 +42,23 @@
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <h1>Contact Info</h1>
+                    <td>Id</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Phone Number</td>
+                    <td>Email</td>
+                    <td>Note</td>
                 </tr>
                 </thead>
                 <tbody>
                     <!--/*@thymesVar id="contacts" type=""*/-->
                     <tr th:each="contact : ${contacts}">
-                        <td th:text="${contact}"></td>
+                        <td th:text="${contact.id}"></td>
+                        <td th:text="${contact.firstName}"></td>
+                        <td th:text="${contact.lastName}"></td>
+                        <td th:text="${contact.phoneNumber}"></td>
+                        <td th:text="${contact.email}"></td>
+                        <td th:text="${contact.note}"></td>
                     </tr>
                 </tbody>
             </table>
