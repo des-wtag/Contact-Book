@@ -19,7 +19,7 @@ spring.datasource.password=root
   ---Project has  a Register page, a Login, a Home page and all contacts page
   ---Project has  three tables User, Role and Contact
   --- User can have multiple roles and Role can have multiple users
-  --- Rest API(CRUD) has been implemented with Spring scurity for Contact model
+  --- Rest API(CRUD) has been implemented with Spring security for Contact model
   
   ```
 
